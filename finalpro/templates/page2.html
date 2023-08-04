@@ -1,0 +1,422 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+      <script src="{% static 'js/dropdown.min.js' %}" rel="stylesheet" ></script>
+
+
+
+
+
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, p {
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+
+      }
+      h1 {
+      position: absolute;
+      margin: 0;
+      font-size: 32px;
+      color: #fff;
+      z-index: 2;
+      }
+      h2 {
+      font-weight: 400;
+      }
+      .testbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 20px;
+      }
+      form {
+      width: 60%;
+      padding: 20px;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 0 15px 0 #095484;
+      }
+      .banner {
+      position: relative;
+      height: 210px;
+      background-image: url("static/img/banner1.png");
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      }
+      .banner::after {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      }
+      input, select {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      }
+      input {
+      width: calc(50% - 20px);
+      padding: 5px;
+      }
+      select {
+      width: 100%;
+      padding: 7px 0;
+      background: transparent;
+      }
+      .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder, a {
+      color: #095484;
+      }
+      .item input:hover, .item select:hover {
+      border: 1px solid transparent;
+      box-shadow: 0 0 6px 0 #095484;
+      color: #095484;
+      }
+      .item {
+      position: relative;
+      margin: 10px 0;
+      }
+      input[type="date"]::-webkit-inner-spin-button {
+      display: none;
+      }
+      .item i, input[type="date"]::-webkit-calendar-picker-indicator {
+      position:relative;
+      font-size: 20px;
+      color: #a9a9a9;
+      }
+      .item i {
+      right: 5%;
+      top: 5px;
+      z-index: 1;
+      }
+      [type="date"]::-webkit-calendar-picker-indicator {
+      right: 1%;
+      z-index: 2;
+      opacity: 0;
+      cursor: pointer;
+      }
+      input[type=checkbox]  {
+      display: none;
+      }
+      label.check {
+      position: relative;
+      display: inline-block;
+      margin: 10px 80px 10px 0;
+      cursor: pointer;
+      }
+      .materials span {
+      margin-left: 30px;
+      }
+      span.required {
+      margin-left: 0;
+      color: red;
+      }
+      label.check:before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 2px;
+      border: 1px solid #095484;
+      }
+      input[type=checkbox]:checked + .check:before {
+      background: #095484;
+      }
+      label.check:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 4px;
+      width: 8px;
+      height: 4px;
+      border: 3px solid #fff;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+      opacity: 0;
+      }
+      input[type=checkbox]:checked + label:after {
+
+
+
+
+
+       opacity: 1;
+       display: inline-block
+       margin-left: 20;
+      }
+       input[type=checkbox]  {
+      display: none;
+      }
+     label.checkbox {
+      position: relative;
+      display: inline-block;
+      margin: 5px 20px 15px 0;
+      cursor: pointer;
+      }
+
+      .btn-block {
+      margin-top: 10px;
+      text-align: center;
+      }
+      button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #095484;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background: #0666a3;
+      }
+      @media (min-width: 568px) {
+      .name-item, .city-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .name-item input, .city-item input {
+      width: calc(50% - 20px);
+      }
+       .age-item input, .city-item input {
+      width: calc(5% - 20px);
+      }
+      .city-item select {
+      width: calc(50% - 8px);
+      }
+      .f-group{
+          float:left;
+
+      }
+      .btn{
+width: 100px;
+height: 40px;
+display: flex;
+align-items: center;
+margin-top: 1.2em;
+padding: 0 0.5em;
+}
+.btn input{
+position: relative;
+cursor: pointer;
+appearance: none;
+-webkit-appearance: none;
+}
+.btn input::before,
+.btn input::after{
+content: '';
+position: absolute;
+width: 5px;
+height: 5px;
+border-radius: 50px;
+}
+.btn input:checked::before{
+background: #ca4444;
+transform: translate(-50%,-50%);
+}
+.btn input::after{
+width: 10px;
+height: 10px;
+background: none;
+
+border-radius: 50px;
+transform: translate(-80%, -50%);
+transition: all .4s;
+}
+.btn input:checked::after{
+width: 100px;
+height: 40px;
+border-radius: 10px;
+transform: translate(-15%, -50%);
+z-index: 10;
+}
+.btn label{
+margin-left: 0.5em;
+cursor: pointer;
+}
+      select
+      {
+      border: 1px solid #555;
+      height:40px;
+      width:200px;
+      padding;0 15px;
+      margin-right:20px;
+      }
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="testbox">
+
+      <form action="{% url 'finalproapp1:saveData' %}" method="post">
+          {% csrf_token %}
+        <div class="banner">
+          <h1>Students Details Form</h1>
+        </div>
+
+        <div class="item">
+          <h2>Name</h2>
+          <div class="name-item">
+            <input type="text" name="name" placeholder="name"/>
+
+          </div>
+        </div>
+        <div class="item">
+          <h2>Date Of Birth</h2>
+          <input type="date" name="dob"/>
+          <i class="fas fa-calendar-alt"></i>
+
+        </div>
+        <div class="item">
+          <h2>Age</h2>
+            <div class="age-item">
+          <input type="number" name="age" class="age" />
+                </div>
+        </div>
+        <div class="item">
+          <h2>Gender</h2>
+          <div class="container">
+
+                  <div class="btn">
+                       <input type="radio" name="gender" id="Male">
+                         <label for="Male">Male</label>
+                     </div>
+                     <div class="btn">
+                       <input type="radio" name="gender" id="Female">
+                       <label for="Female">Female</label>
+                             </div>
+                         </div>
+        </div>
+        <div class="item">
+          <h2>Phone Number</h2>
+          <input type="number" name="phone" id="phone" placeholder="Enter the number" pattern="[0-9]{10}" />
+
+        </div>
+        <div class="item">
+          <h2>Email</h2>
+          <input type="email" name="email" placeholder="@gmail.com" id="email"  />
+        </div>
+        <div class="item">
+          <h2>Address</h2>
+          <input type="text" name="address" placeholder=" address" />
+
+<!--          <div class="city-item">-->
+<!--            <input type="text" name="name" placeholder="City" />-->
+<!--            <input type="text" name="name" placeholder="Region" />-->
+<!--            <input type="text" name="name" placeholder="Postal / Zip code" />-->
+<!--            <select>-->
+<!--              <option value="">Country</option>-->
+<!--              <option value="1">Russia</option>-->
+<!--              <option value="2">Germany</option>-->
+<!--              <option value="3">France</option>-->
+<!--              <option value="4">Armenia</option>-->
+<!--              <option value="5">USA</option>-->
+<!--            </select>-->
+<!--          </div>-->
+        </div>
+
+
+          <div class="item">
+              <div >
+                  <h2>Department</h2>
+                  <select name="slct1" id="slct1" onchange="populate(this.id,'slct2')">
+                      <option value=""> -- Choose Department -- </option>
+                      <option value="mathsbiology"> Maths Biology </option>
+                      <option value="computerscience"> Computer Science </option>
+                      <option value="commerce"> Commerce </option>
+                      <option value="humanities"> Humanities </option>
+                      <option value="electronics"> Electronics </option>
+                      <option value="statstics"> Statistics </option>
+                  </select>
+              </div>
+             <div >
+                 <h2>Courses</h2>
+                 <select name="slct2" id="slct2">
+
+                 </select>
+
+             </div>
+          </div>
+
+
+
+               <div class="item">
+          <h2>Purpose</h2>
+          <select name="purpose">
+
+              <option value="1">Enquiry</option>
+              <option value="2">Place order</option>
+              <option value="3">Return</option>
+              <option value="4">Rating</option>
+
+            </select>
+        </div>
+        <h2>Materials provide</h2>
+          <div class="materials">
+
+          <div class=" checkbox-item">
+            <div>
+              <input type="checkbox" value="Books" id="check_1" name="option"  />
+              <label for="check_1" class="check"><span>Books </span></label>
+                <input type="checkbox" value="Pen" id="check_2" name="option"   />
+              <label for="check_2" class="check"><span>Pen </span></label>
+                <input type="checkbox" value="Pencil" id="check_3" name="option"  />
+              <label for="check_3" class="check"><span>Pencil </span></label>
+                <input type="checkbox" value="Exam paper" id="check_4" name="option"  />
+              <label for="check_4" class="check"><span>Exam paper </span></label>
+                <input type="checkbox" value="Chart paper" id="check_5" name="option" />
+              <label for="check_5" class="check"><span>Chart paper </span></label>
+                <input type="checkbox" value="Instrument Box" id="check_6" name="option"  />
+              <label for="check_6" class="check"><span>Instrument Box </span></label>
+
+
+<!--                <input type="checkbox" name="option1" value="Books"> Books<br>-->
+<!--                <input type="checkbox" name="option2" value="Pen "> Pen<br>-->
+<!--                <input type="checkbox" name="option3" value="Pencil"> Pencil<br>-->
+<!--                <input type="checkbox" name="option4" value="Exam papper"> Exam papper<br>-->
+<!--                <input type="checkbox" name="option5" value="Chart papper"> Chart papper<br>-->
+<!--                <input type="checkbox" name="option6" value="Insrtument Box "> Insrtument Box<br>-->
+
+<!--                <button type="submit">Submit</button>-->
+            </div>
+
+          </div>
+        </div>
+           <div class="btn-block">
+               <button type="submit" href="">Submit</button>
+               <button type="submit" href="{% url 'finalproapp1:logout' %}">Logout</button>
+        </div>
+          {% for msg in messages %}
+        <h2>{{msg}}</h2>
+        {% endfor %}
+
+
+      </form>
+
+
+
+    </div>
+  </body>
+</html>
